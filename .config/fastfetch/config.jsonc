@@ -1,0 +1,94 @@
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": {
+        "source": "~/.config/fastfetch/berserk.txt",
+        "type": "file",
+        "padding": {
+            "top": 2,
+            "right": 6 // Увеличили отступ от арта
+        },
+        "color": { "1": "white" }
+    },
+    "display": {
+        "separator": " : ",
+        "color": "white"
+    },
+    "modules": [
+        {
+            "type": "title",
+            "format": " {1}@{2}",
+            "color": "white"
+        },
+        {
+            "type": "custom",
+            "format": "┌─ System Information ──────────────────┐",
+            "outputColor": "white"
+        },
+        {
+            "type": "os",
+            "key": "│ 󰣇 OS     ", // Добавлены пробелы для выравнивания
+            "keyColor": "white"
+        },
+        {
+            "type": "kernel",
+            "key": "│ 󰌽 Kernel ",
+            "keyColor": "white"
+        },
+        {
+            "type": "packages",
+            "key": "│ 󰏖 PKG    ",
+            "keyColor": "white"
+        },
+        {
+            "type": "wm",
+            "key": "│  WM     ",
+            "keyColor": "white"
+        },
+        {
+            "type": "terminal",
+            "key": "│  TER    ",
+            "keyColor": "white"
+        },
+        {
+            "type": "custom",
+            "format": "└───────────────────────────────────────┘",
+            "outputColor": "white"
+        },
+        "break",
+        {
+            "type": "custom",
+            "format": "┌─ Hardware Information ────────────────┐",
+            "outputColor": "white"
+        },
+        {
+            "type": "cpu",
+            "key": "│  CPU    ",
+            "keyColor": "white"
+        },
+        {
+            "type": "gpu",
+            "key": "│ 󰢮 GPU    ",
+            "keyColor": "white"
+        },
+        {
+            "type": "memory",
+            "key": "│  RAM    ",
+            "keyColor": "white"
+        },
+        {
+            "type": "uptime",
+            "key": "│ 󱎫 Uptime ",
+            "keyColor": "white"
+        },
+        {
+            "type": "custom",
+            "format": "└───────────────────────────────────────┘",
+            "outputColor": "white"
+        },
+        "break",
+        {
+            "type": "colors",
+            "symbol": "circle"
+        }
+    ]
+}
