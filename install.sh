@@ -90,19 +90,44 @@ USER_APPS=(
     xmcl-launcher
     python-pip
     python-pyqt5
+    github-cli
+    nodejs
+    npm
+    rust
+    docker
+    mpv
+    discord
+    slack
+    steam
+    heroic-games-launcher
+    lutris
+    ranger
+    btop
+    obs-studio
+    yakuake
+    virtualbox
 )
+
+echo ""
+echo "[4.6/7] Installing AUR packages (yay)..."
+if ! command -v yay &> /dev/null; then
+    git clone https://aur.archlinux.org/yay.git /tmp/yay
+    cd /tmp/yay
+    makepkg -si --noconfirm
+    cd -
+fi
 
 for pkg in "${USER_APPS[@]}"; do
     if pacman -Qq "$pkg" >/dev/null 2>&1; then
         echo "  [OK] $pkg already installed"
     else
         echo "  [+] Installing $pkg..."
-        pacman -Sy --noconfirm "$pkg" 2>/dev/null || echo "  [!] Failed to install $pkg"
+        pacman -Sy --noconfirm "$pkg" 2>/dev/null || yay -S --noconfirm "$pkg" 2>/dev/null || echo "  [!] Failed to install $pkg"
     fi
 done
 
-if ! pacman -Qq happy >/dev/null 2>&1; then
-    echo "  [+] Installing Home Assistant (happy)..."
+if ! pip show homeassistant >/dev/null 2>&1; then
+    echo "  [+] Installing Home Assistant..."
     pip install homeassistant 2>/dev/null || echo "  [!] Failed to install homeassistant"
 fi
 
