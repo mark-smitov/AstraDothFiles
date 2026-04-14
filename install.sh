@@ -81,6 +81,31 @@ HYPRLAND_PKGS=(
     nautilus
 )
 
+echo ""
+echo "[4.5/7] Installing user applications..."
+USER_APPS=(
+    telegram-desktop
+    visual-studio-code-bin
+    kiro-ide
+    xmcl-launcher
+    python-pip
+    python-pyqt5
+)
+
+for pkg in "${USER_APPS[@]}"; do
+    if pacman -Qq "$pkg" >/dev/null 2>&1; then
+        echo "  [OK] $pkg already installed"
+    else
+        echo "  [+] Installing $pkg..."
+        pacman -Sy --noconfirm "$pkg" 2>/dev/null || echo "  [!] Failed to install $pkg"
+    fi
+done
+
+if ! pacman -Qq happy >/dev/null 2>&1; then
+    echo "  [+] Installing Home Assistant (happy)..."
+    pip install homeassistant 2>/dev/null || echo "  [!] Failed to install homeassistant"
+fi
+
 for pkg in "${HYPRLAND_PKGS[@]}"; do
     if pacman -Qq "$pkg" >/dev/null 2>&1; then
         echo "  [OK] $pkg already installed"
